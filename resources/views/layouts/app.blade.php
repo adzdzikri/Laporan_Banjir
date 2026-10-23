@@ -90,7 +90,18 @@
 
     <nav>
         <a href="{{ route('laporan.form') }}">Form Laporan</a>
-        <a href="{{ route('laporan.daftar') }}">Daftar Laporan</a>
+        @auth
+            <a href="{{ route('laporan.daftar') }}">Daftar Laporan</a>
+            <a href="{{ route('profil') }}">Profil Petugas</a>
+            <form method="POST" action="{{ route('logout') }}" style="display:inline">
+                @csrf
+                <button type="submit" style="background:#0d47a1">Logout</button>
+            </form>
+        @endauth
+        @guest
+            <a href="{{ route('login') }}">Login</a>
+            <a href="{{ route('register') }}">Register</a>
+        @endguest
     </nav>
 </header>
 
